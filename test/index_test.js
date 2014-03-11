@@ -21,6 +21,11 @@ describe("Syslogh", function() {
     it("must not throw when using sprintf placeholders", function() {
       Syslogh.syslog.bind(null, Syslogh.DEBUG, "%s %d %f").must.not.throw()
     })
+
+    it("must not throw when using sprintf placeholders with args", function() {
+      var syslog = Syslogh.syslog.bind(null, Syslogh.DEBUG, "%s %d %d", "a", 3)
+      syslog.must.not.throw()
+    })
   })
 
   describe(".closelog", function() {
