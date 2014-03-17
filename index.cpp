@@ -2,7 +2,8 @@
 #include <v8.h>
 #include <syslog.h>
 
-using v8::FunctionCallbackInfo;
+// On Linux, FunctionCallbackInfo is already defined by something else other
+// than V8's namespace. Use full name everywhere.
 using v8::Handle;
 using v8::Integer;
 using v8::Object;
@@ -10,20 +11,20 @@ using v8::String;
 using v8::Value;
 
 namespace Syslogh {
-	void openlog(const FunctionCallbackInfo<Value>& args) {
+	void openlog(const v8::FunctionCallbackInfo<Value>& args) {
 		String::Utf8Value identity(args[0]->ToString());
 		int flags = args[1]->Int32Value();
 		int facility = args[2]->Int32Value();
 		::openlog(*identity, flags, facility);
 	}
 
-	void syslog(const FunctionCallbackInfo<Value>& args) {
+	void syslog(const v8::FunctionCallbackInfo<Value>& args) {
 		int priority = args[0]->Int32Value();
 		String::Utf8Value msg(args[1]->ToString());
 		::syslog(priority, "%s", *msg);
 	}
 
-	void closelog(const FunctionCallbackInfo<Value>& args) {
+	void closelog(const v8::FunctionCallbackInfo<Value>& args) {
 		::closelog();
 	}
 
