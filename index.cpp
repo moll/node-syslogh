@@ -10,12 +10,17 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
+// Syslog on Linux does not seem to copy the identity string itself to
+// permanent storage.
+char identity[256] = {0};
+
 namespace Syslogh {
 	void openlog(const v8::FunctionCallbackInfo<Value>& args) {
-		String::Utf8Value identity(args[0]->ToString());
+		// WriteUtf8 does not guarantee null-termination, so use a -1 length.
+		args[0]->ToString()->WriteUtf8(identity, sizeof(identity) - 1);
 		int flags = args[1]->Int32Value();
 		int facility = args[2]->Int32Value();
-		::openlog(*identity, flags, facility);
+		::openlog(::identity, flags, facility);
 	}
 
 	void syslog(const v8::FunctionCallbackInfo<Value>& args) {
