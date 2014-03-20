@@ -1,7 +1,9 @@
 Syslogh.js
 ==========
 [![NPM version][npm-badge]](http://badge.fury.io/js/syslogh)
+[![Build status][travis-badge]](https://travis-ci.org/moll/node-syslogh)
 [npm-badge]: https://badge.fury.io/js/syslogh.png
+[travis-badge]: https://travis-ci.org/moll/node-syslogh.png?branch=master
 
 Syslogh.js is a library for logging to your system's Syslog ([RFC
 3164][rfc3164]) from within Node.js. It provides simple native bindings to
