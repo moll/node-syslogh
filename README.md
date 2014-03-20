@@ -33,7 +33,7 @@ var Syslogh = require("syslogh")
 Syslogh.openlog("myapp", Syslogh.PID, Syslogh.LOCAL7)
 ```
 
-Then, when logging, just pass in the [**severity**](#severeties) and your
+Then, when logging, just pass in the [**severity**](#severities) and your
 message.  
 Just like with regular [`syslog(3)`][syslog(3)], you can use `sprintf` style
 placeholders. Those internally use Node's built-in `Util.format`.
