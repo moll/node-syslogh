@@ -2,7 +2,7 @@
 	"name": "syslogh",
 	"version": "0.0.0",
 	"description": "",
-	"keywords": [],
+	"keywords": ["syslog", "rfc3164"],
 	"homepage": "https://github.com/moll/node-syslogh",
 	"bugs": "https://github.com/moll/node-syslogh/issues",
 
