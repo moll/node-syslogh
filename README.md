@@ -30,7 +30,7 @@ First use `openlog` with **your app name** (up to 255 characters), [**options**]
 [**facility**](#facilities):
 ```javascript
 var Syslogh = require("syslogh")
-Syslogh.openlog("myapp", Syslogh.PID | Syslogh.NDELAY, Syslogh.LOCAL7)
+Syslogh.openlog("myapp", Syslogh.PID, Syslogh.LOCAL7)
 ```
 
 Then, when logging, just pass in the [**severity**](#severeties) and your
