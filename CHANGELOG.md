@@ -1,4 +1,4 @@
-## Unreleased
+## 1.0.1 (Mar 20, 2014)
 - Adds description to `package.json`.  
   Sadly, no C++ template metaprogramming yet.
 
