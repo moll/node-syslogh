@@ -51,7 +51,7 @@ logs before they're sent. This isn't implemented. Not yet, at least.
 
 
 ### Options
-Options to pass to `openlog` come from [`<syslog.h>`][syslog.h].  
+Options to pass to `openlog` come from [`<syslog.h>`][syslog.h].
 
 Option | Description
 -------|------------
@@ -101,7 +101,7 @@ Access them as constants. E.g. `Syslogh.LOCAL7`.
 
 
 ### Severities
-Severities to pass to `syslog` come from [`<syslog.h>`][syslog.h].and ([RFC
+Severities to pass to `syslog` come from [`<syslog.h>`][syslog.h] and ([RFC
 3164][rfc3164]).  
 
 Severity | Description
