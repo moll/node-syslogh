@@ -4,11 +4,11 @@ TEST_OPTS :=
 love:
 	@echo "Feel like makin' love."
 
+build: binding.gyp
+	node-gyp configure
+
 compile: build
 	$(MAKE) -C build
-
-build:
-	node-gyp configure
 
 test: compile
 	@node $(NODE_OPTS) ./node_modules/.bin/_mocha -R dot $(TEST_OPTS)
