@@ -1,88 +1,86 @@
 #include <node.h>
 #include <v8.h>
+#include <nan.h>
 #include <syslog.h>
 
-// On Linux, FunctionCallbackInfo is already defined by something else other
-// than V8's namespace. Use full name everywhere.
-using v8::Handle;
-using v8::Integer;
-using v8::Object;
-using v8::String;
-using v8::Value;
+#define String(str) NanNew<v8::String>(str)
+#define Integer(str) NanNew<v8::Integer>(str)
 
 // Syslog on Linux does not seem to copy the identity string itself to
 // permanent storage.
 char identity[256] = {0};
 
 namespace Syslogh {
-	void openlog(const v8::FunctionCallbackInfo<Value>& args) {
+	NAN_METHOD(openlog) {
 		// WriteUtf8 does not guarantee null-termination, so use a -1 length.
 		args[0]->ToString()->WriteUtf8(identity, sizeof(identity) - 1);
 		int flags = args[1]->Int32Value();
 		int facility = args[2]->Int32Value();
 		::openlog(::identity, flags, facility);
+		NanReturnUndefined();
 	}
 
-	void syslog(const v8::FunctionCallbackInfo<Value>& args) {
+	NAN_METHOD(syslog) {
 		int priority = args[0]->Int32Value();
-		String::Utf8Value msg(args[1]->ToString());
+		v8::String::Utf8Value msg(args[1]->ToString());
 		::syslog(priority, "%s", *msg);
+		NanReturnUndefined();
 	}
 
-	void closelog(const v8::FunctionCallbackInfo<Value>& args) {
+	NAN_METHOD(closelog) {
 		::closelog();
+		NanReturnUndefined();
 	}
 
-	void initialize(Handle<Object> exports) {
+	void initialize(v8::Handle<v8::Object> exports) {
 		NODE_SET_METHOD(exports, "openlog", openlog);
 		NODE_SET_METHOD(exports, "syslog", syslog);
 		NODE_SET_METHOD(exports, "closelog", closelog);
 
-		exports->Set(String::New("CONS"), Integer::New(LOG_CONS));
-		exports->Set(String::New("ODELAY"), Integer::New(LOG_ODELAY));
-		exports->Set(String::New("PID"), Integer::New(LOG_PID));
-		exports->Set(String::New("NDELAY"), Integer::New(LOG_NDELAY));
-		exports->Set(String::New("NOWAIT"), Integer::New(LOG_NOWAIT));
+		exports->Set(String("CONS"), Integer(LOG_CONS));
+		exports->Set(String("ODELAY"), Integer(LOG_ODELAY));
+		exports->Set(String("PID"), Integer(LOG_PID));
+		exports->Set(String("NDELAY"), Integer(LOG_NDELAY));
+		exports->Set(String("NOWAIT"), Integer(LOG_NOWAIT));
 
 		// Seems available on OS X but not in the UNIX syslog.h.
 		#ifdef LOG_PERROR
-		exports->Set(String::New("PERROR"), Integer::New(LOG_PERROR));
+		exports->Set(String("PERROR"), Integer(LOG_PERROR));
 		#endif
 
-		exports->Set(String::New("KERN"), Integer::New(LOG_KERN));
-		exports->Set(String::New("USER"), Integer::New(LOG_USER));
-		exports->Set(String::New("MAIL"), Integer::New(LOG_MAIL));
-		exports->Set(String::New("DAEMON"), Integer::New(LOG_DAEMON));
-		exports->Set(String::New("AUTH"), Integer::New(LOG_AUTH));
-		exports->Set(String::New("SYSLOG"), Integer::New(LOG_SYSLOG));
-		exports->Set(String::New("LPR"), Integer::New(LOG_LPR));
-		exports->Set(String::New("NEWS"), Integer::New(LOG_NEWS));
-		exports->Set(String::New("UUCP"), Integer::New(LOG_UUCP));
-		exports->Set(String::New("CRON"), Integer::New(LOG_CRON));
+		exports->Set(String("KERN"), Integer(LOG_KERN));
+		exports->Set(String("USER"), Integer(LOG_USER));
+		exports->Set(String("MAIL"), Integer(LOG_MAIL));
+		exports->Set(String("DAEMON"), Integer(LOG_DAEMON));
+		exports->Set(String("AUTH"), Integer(LOG_AUTH));
+		exports->Set(String("SYSLOG"), Integer(LOG_SYSLOG));
+		exports->Set(String("LPR"), Integer(LOG_LPR));
+		exports->Set(String("NEWS"), Integer(LOG_NEWS));
+		exports->Set(String("UUCP"), Integer(LOG_UUCP));
+		exports->Set(String("CRON"), Integer(LOG_CRON));
 
 		// Available on OS X but not in the UNIX syslog.h.
 		#ifdef LOG_AUTHPRIV
-		exports->Set(String::New("AUTHPRIV"), Integer::New(LOG_AUTHPRIV));
+		exports->Set(String("AUTHPRIV"), Integer(LOG_AUTHPRIV));
 		#endif
 
-		// Locals.
-		exports->Set(String::New("LOCAL0"), Integer::New(LOG_LOCAL0));
-		exports->Set(String::New("LOCAL1"), Integer::New(LOG_LOCAL1));
-		exports->Set(String::New("LOCAL2"), Integer::New(LOG_LOCAL2));
-		exports->Set(String::New("LOCAL3"), Integer::New(LOG_LOCAL3));
-		exports->Set(String::New("LOCAL4"), Integer::New(LOG_LOCAL4));
-		exports->Set(String::New("LOCAL5"), Integer::New(LOG_LOCAL5));
-		exports->Set(String::New("LOCAL6"), Integer::New(LOG_LOCAL6));
-		exports->Set(String::New("LOCAL7"), Integer::New(LOG_LOCAL7));
+		exports->Set(String("LOCAL0"), Integer(LOG_LOCAL0));
+		exports->Set(String("LOCAL1"), Integer(LOG_LOCAL1));
+		exports->Set(String("LOCAL2"), Integer(LOG_LOCAL2));
+		exports->Set(String("LOCAL3"), Integer(LOG_LOCAL3));
+		exports->Set(String("LOCAL4"), Integer(LOG_LOCAL4));
+		exports->Set(String("LOCAL5"), Integer(LOG_LOCAL5));
+		exports->Set(String("LOCAL6"), Integer(LOG_LOCAL6));
+		exports->Set(String("LOCAL7"), Integer(LOG_LOCAL7));
 
-		exports->Set(String::New("EMERG"), Integer::New(LOG_EMERG));
-		exports->Set(String::New("ALERT"), Integer::New(LOG_ALERT));
-		exports->Set(String::New("CRIT"), Integer::New(LOG_CRIT));
-		exports->Set(String::New("ERR"), Integer::New(LOG_ERR));
-		exports->Set(String::New("WARNING"), Integer::New(LOG_WARNING));
-		exports->Set(String::New("NOTICE"), Integer::New(LOG_NOTICE));
-		exports->Set(String::New("INFO"), Integer::New(LOG_INFO));
-		exports->Set(String::New("DEBUG"), Integer::New(LOG_DEBUG));
+		exports->Set(String("EMERG"), Integer(LOG_EMERG));
+		exports->Set(String("ALERT"), Integer(LOG_ALERT));
+		exports->Set(String("CRIT"), Integer(LOG_CRIT));
+		exports->Set(String("ERR"), Integer(LOG_ERR));
+		exports->Set(String("WARNING"), Integer(LOG_WARNING));
+		exports->Set(String("NOTICE"), Integer(LOG_NOTICE));
+		exports->Set(String("INFO"), Integer(LOG_INFO));
+		exports->Set(String("DEBUG"), Integer(LOG_DEBUG));
 	}
 }
 

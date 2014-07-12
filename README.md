@@ -10,8 +10,8 @@ Syslogh.js is a library for logging to your system's Syslog ([RFC
 [`<syslog.h>`][syslog.h] and [`syslog(3)`][syslog(3)]. You're in luck, because
 it does not come with any bells and whistles.  Intentionally. KISS, right?
 
-Please note that it currently **works only with Node v0.11** and later. In fact
-it's the only Syslog library I know that works with v0.11 as of today.
+Now works with both Node **v0.10** (stable) and **v0.11** (development).  
+In fact, it's the only Syslog library I know that works with v0.11 as of today.
 
 [rfc3164]: https://tools.ietf.org/html/rfc3164
 [syslog.h]: http://pubs.opengroup.org/onlinepubs/7908799/xsh/syslog.h.html

@@ -1,6 +1,7 @@
 {
 	"targets": [{
-			"target_name": "index",
-			"sources": ["index.cpp"]
+		"target_name": "index",
+		"sources": ["index.cpp"],
+		"include_dirs" : ["<!(node -e \"require('nan')\")"]
 	}]
 }
