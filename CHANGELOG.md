@@ -1,3 +1,8 @@
+## Unreleased
+- Upgrades [NAN][nan] (a library for building Syslogh.js) dependency to v1.3.0.
+
+[nan]: https://github.com/rvagg/nan
+
 ## 1.1.1 (Sep 7, 2014)
 - Fixes installing by moving `nan` dependency from `devDependencies` to
   `dependencies`.
