@@ -1,3 +1,7 @@
+## Unreleased
+- Fixes installing by moving `nan` dependency from `devDependencies` to
+  `dependencies`.
+
 ## 1.1.0 (Jul 12, 2014)
 - Adds support for Node v0.10.28 and v0.11.13.  
   Unfortunately versions prior to v0.11.13 in the Node v0.11 branch are no
