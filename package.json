@@ -1,6 +1,6 @@
 {
 	"name": "syslogh",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Log to the system's Syslog. Provides simple native bindings to <syslog.h> and syslog(3). Works on Node v0.11.",
 	"keywords": ["syslog", "rfc3164"],
 	"homepage": "https://github.com/moll/node-syslogh",

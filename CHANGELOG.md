@@ -1,4 +1,4 @@
-## Unreleased
+## 1.1.2 (Sep 7, 2014)
 - Upgrades [NAN][nan] (a library for building Syslogh.js) dependency to v1.3.0.
 
 [nan]: https://github.com/rvagg/nan
