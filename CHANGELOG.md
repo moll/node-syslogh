@@ -1,4 +1,4 @@
-## Unreleased
+## 1.1.1 (Sep 7, 2014)
 - Fixes installing by moving `nan` dependency from `devDependencies` to
   `dependencies`.
 
