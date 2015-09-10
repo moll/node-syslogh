@@ -1,3 +1,7 @@
+## Unreleased
+- Adds support for Node v4.  
+  Thanks, [Adrián Estrada](http://pomodorize.me), for the help!
+
 ## 1.1.2 (Sep 7, 2014)
 - Upgrades [NAN][nan] (a library for building Syslogh.js) dependency to v1.3.0.
 

@@ -2,20 +2,21 @@ Syslogh.js
 ==========
 [![NPM version][npm-badge]](http://badge.fury.io/js/syslogh)
 [![Build status][travis-badge]](https://travis-ci.org/moll/node-syslogh)
-[npm-badge]: https://badge.fury.io/js/syslogh.png
-[travis-badge]: https://travis-ci.org/moll/node-syslogh.png?branch=master
 
 Syslogh.js is a library for logging to your system's Syslog ([RFC
 3164][rfc3164]) from within Node.js. It provides simple native bindings to
 [`<syslog.h>`][syslog.h] and [`syslog(3)`][syslog(3)]. You're in luck, because
 it does not come with any bells and whistles.  Intentionally. KISS, right?
 
-Now works with both Node **v0.10** (stable) and **v0.11** (development).  
-In fact, it's the only Syslog library I know that works with v0.11 as of today.
+Works with Node **v0.10**, **v0.11**, **v0.12** and of course **v4** (stable).  
+Using it in production with [Monday Calendar][monday], so will be kept up to
+date when new Node versions come out.
 
 [rfc3164]: https://tools.ietf.org/html/rfc3164
 [syslog.h]: http://pubs.opengroup.org/onlinepubs/7908799/xsh/syslog.h.html
 [syslog(3)]: http://linux.die.net/man/3/syslog
+[npm-badge]: https://badge.fury.io/js/syslogh.png
+[travis-badge]: https://travis-ci.org/moll/node-syslogh.png?branch=master
 
 
 Installing
@@ -135,10 +136,11 @@ For more convoluted language, see the `LICENSE` file.
 About
 -----
 **[Andri Möll](http://themoll.com)** typed this and the code.  
-[Monday Calendar](https://mondayapp.com) supported the engineering work.
+[Monday Calendar][monday] supported the engineering work.
 
 If you find Syslogh.js needs improving, please don't hesitate to type to me now
 at [andri@dot.ee][email] or [create an issue online][issues].
 
 [email]: mailto:andri@dot.ee
 [issues]: https://github.com/moll/node-syslogh/issues
+[monday]: https://mondayapp.com
