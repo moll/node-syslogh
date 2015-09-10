@@ -1,6 +1,6 @@
 ## Unreleased
 - Adds support for Node v4.  
-  Thanks, [Adrián Estrada](http://pomodorize.me), for the help!
+  Thanks, [Adrián Estrada](https://github.com/edsadr), for the help!
 - Bumps up the minimum supported Node v0.11 version to v0.11.15.  
   This is because [NAN][nan] v2, the underlying library that Syslogh.js uses,
   doesn't seem to support v0.11.13 nor v0.11.14 any more. Again, because v0.11
