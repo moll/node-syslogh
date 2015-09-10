@@ -15,7 +15,7 @@ compile: build
 test: compile
 	@$(NODE) $(NODE_OPTS) ./node_modules/.bin/_mocha -R dot $(TEST_OPTS)
 
-spec:  compile
+spec: compile
 	@$(NODE) $(NODE_OPTS) ./node_modules/.bin/_mocha -R spec $(TEST_OPTS)
 
 autotest: compile
