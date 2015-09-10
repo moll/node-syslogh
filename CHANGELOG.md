@@ -1,4 +1,4 @@
-## Unreleased
+## 1.2.0 (Sep 10, 2015)
 - Adds support for Node v4 and Io v3.3.  
   Thanks, [Adrián Estrada](https://github.com/edsadr), for the help!
 - Bumps up the minimum supported Node v0.11 version to v0.11.15.  
