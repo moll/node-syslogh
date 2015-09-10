@@ -17,19 +17,16 @@ namespace Syslogh {
 		int flags = info[1]->Int32Value();
 		int facility = info[2]->Int32Value();
 		::openlog(::identity, flags, facility);
-		return;
 	}
 
 	NAN_METHOD(syslog) {
 		int priority = info[0]->Int32Value();
 		v8::String::Utf8Value msg(info[1]->ToString());
 		::syslog(priority, "%s", *msg);
-		return;
 	}
 
 	NAN_METHOD(closelog) {
 		::closelog();
-		return;
 	}
 
 	void initialize(v8::Handle<v8::Object> exports) {
