@@ -2,6 +2,7 @@ sudo: false
 language: node_js
 node_js:
   - "node"
+  - "iojs"
   - "0.10.28"
   - "0.11.13"
   - "0.11"
