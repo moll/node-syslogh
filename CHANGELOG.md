@@ -1,5 +1,5 @@
 ## Unreleased
-- Adds support for Node v4.  
+- Adds support for Node v4 and Io v3.3.  
   Thanks, [Adrián Estrada](https://github.com/edsadr), for the help!
 - Bumps up the minimum supported Node v0.11 version to v0.11.15.  
   This is because [NAN][nan] v2, the underlying library that Syslogh.js uses,
