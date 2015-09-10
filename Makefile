@@ -1,11 +1,12 @@
 NODE_OPTS :=
 TEST_OPTS :=
+NODE_GYP = npm --ignore-scripts false run node-gyp
 
 love:
 	@echo "Feel like makin' love."
 
 build: binding.gyp
-	node-gyp configure
+	$(NODE_GYP) configure
 
 compile: build
 	$(MAKE) -C build
@@ -34,7 +35,7 @@ tag:
 clean:
 	rm -f *.tgz
 	npm prune --production
-	node-gyp clean
+	$(NODE_GYP) clean
 
 .PHONY: love
 .PHONY: compile

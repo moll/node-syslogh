@@ -25,6 +25,7 @@
 	"main": "index.js",
 
 	"scripts": {
+		"node-gyp": "node-gyp",
 		"test": "make test",
 		"install": "node-gyp rebuild"
 	},
