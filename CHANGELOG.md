@@ -1,3 +1,7 @@
+## Unreleased
+- Fixes the Node.js version warning on installation by fixing the `engines`
+  property in `package.json` to use `||` instead of commas.
+
 ## 1.2.0 (Sep 10, 2015)
 - Adds support for Node v4 and Io v3.3.  
   Thanks, [Adrián Estrada](https://github.com/edsadr), for the help!
