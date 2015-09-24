@@ -1,4 +1,4 @@
-## Unreleased
+## 1.2.1 (Sep 24, 2015)
 - Fixes the Node.js version warning on installation by fixing the `engines`
   property in `package.json` to use `||` instead of commas.
 
