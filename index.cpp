@@ -7,6 +7,7 @@
 #define Integer(str) Nan::New<v8::Integer>(str)
 #define StringArg(arg) Nan::To<v8::String>(arg).ToLocalChecked()
 #define IntegerArg(arg) Nan::To<int32_t>(arg).FromJust()
+#define SET_CONST(name) Nan::Set(target, String(#name), Integer(LOG_##name));
 
 // Syslog on Linux does not seem to copy the identity string itself to
 // permanent storage.
@@ -37,50 +38,50 @@ namespace Syslogh {
 		NAN_EXPORT(target, syslog);
 		NAN_EXPORT(target, closelog);
 
-		Nan::Set(target, String("CONS"), Integer(LOG_CONS));
-		Nan::Set(target, String("ODELAY"), Integer(LOG_ODELAY));
-		Nan::Set(target, String("PID"), Integer(LOG_PID));
-		Nan::Set(target, String("NDELAY"), Integer(LOG_NDELAY));
-		Nan::Set(target, String("NOWAIT"), Integer(LOG_NOWAIT));
+		SET_CONST(CONS);
+		SET_CONST(ODELAY);
+		SET_CONST(PID);
+		SET_CONST(NDELAY);
+		SET_CONST(NOWAIT);
 
 		// Seems available on OS X but not in the UNIX syslog.h.
 		#ifdef LOG_PERROR
-		Nan::Set(target, String("PERROR"), Integer(LOG_PERROR));
+		SET_CONST(PERROR);
 		#endif
 
-		Nan::Set(target, String("KERN"), Integer(LOG_KERN));
-		Nan::Set(target, String("USER"), Integer(LOG_USER));
-		Nan::Set(target, String("MAIL"), Integer(LOG_MAIL));
-		Nan::Set(target, String("DAEMON"), Integer(LOG_DAEMON));
-		Nan::Set(target, String("AUTH"), Integer(LOG_AUTH));
-		Nan::Set(target, String("SYSLOG"), Integer(LOG_SYSLOG));
-		Nan::Set(target, String("LPR"), Integer(LOG_LPR));
-		Nan::Set(target, String("NEWS"), Integer(LOG_NEWS));
-		Nan::Set(target, String("UUCP"), Integer(LOG_UUCP));
-		Nan::Set(target, String("CRON"), Integer(LOG_CRON));
+		SET_CONST(KERN);
+		SET_CONST(USER);
+		SET_CONST(MAIL);
+		SET_CONST(DAEMON);
+		SET_CONST(AUTH);
+		SET_CONST(SYSLOG);
+		SET_CONST(LPR);
+		SET_CONST(NEWS);
+		SET_CONST(UUCP);
+		SET_CONST(CRON);
 
 		// Available on OS X but not in the UNIX syslog.h.
 		#ifdef LOG_AUTHPRIV
-		Nan::Set(target, String("AUTHPRIV"), Integer(LOG_AUTHPRIV));
+		SET_CONST(AUTHPRIV);
 		#endif
 
-		Nan::Set(target, String("LOCAL0"), Integer(LOG_LOCAL0));
-		Nan::Set(target, String("LOCAL1"), Integer(LOG_LOCAL1));
-		Nan::Set(target, String("LOCAL2"), Integer(LOG_LOCAL2));
-		Nan::Set(target, String("LOCAL3"), Integer(LOG_LOCAL3));
-		Nan::Set(target, String("LOCAL4"), Integer(LOG_LOCAL4));
-		Nan::Set(target, String("LOCAL5"), Integer(LOG_LOCAL5));
-		Nan::Set(target, String("LOCAL6"), Integer(LOG_LOCAL6));
-		Nan::Set(target, String("LOCAL7"), Integer(LOG_LOCAL7));
+		SET_CONST(LOCAL0);
+		SET_CONST(LOCAL1);
+		SET_CONST(LOCAL2);
+		SET_CONST(LOCAL3);
+		SET_CONST(LOCAL4);
+		SET_CONST(LOCAL5);
+		SET_CONST(LOCAL6);
+		SET_CONST(LOCAL7);
 
-		Nan::Set(target, String("EMERG"), Integer(LOG_EMERG));
-		Nan::Set(target, String("ALERT"), Integer(LOG_ALERT));
-		Nan::Set(target, String("CRIT"), Integer(LOG_CRIT));
-		Nan::Set(target, String("ERR"), Integer(LOG_ERR));
-		Nan::Set(target, String("WARNING"), Integer(LOG_WARNING));
-		Nan::Set(target, String("NOTICE"), Integer(LOG_NOTICE));
-		Nan::Set(target, String("INFO"), Integer(LOG_INFO));
-		Nan::Set(target, String("DEBUG"), Integer(LOG_DEBUG));
+		SET_CONST(EMERG);
+		SET_CONST(ALERT);
+		SET_CONST(CRIT);
+		SET_CONST(ERR);
+		SET_CONST(WARNING);
+		SET_CONST(NOTICE);
+		SET_CONST(INFO);
+		SET_CONST(DEBUG);
 	}
 }
 
